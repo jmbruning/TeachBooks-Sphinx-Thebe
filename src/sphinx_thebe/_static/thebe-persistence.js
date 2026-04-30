@@ -16,7 +16,7 @@ function _stableCellId(codeCell, fallbackIndex) {
 
 function _makeHeaderButton(title, text) {
   const btn = document.createElement("button");
-  btn.classList.add("thebelab-button");
+  btn.classList.add("thebelab-button", "thebe-launch-button");
   btn.title = title;
   btn.innerText = text;
   return btn;
@@ -57,10 +57,6 @@ function setupPersistenceControls() {
   const launchBtn = document.querySelector(".thebe-launch-button");
   if (!launchBtn || !launchBtn.parentElement) return;
 
-  const wrapper = document.createElement("span");
-  wrapper.id = "thebe-persistence-controls";
-  wrapper.style.cssText = "display:inline-flex; gap:4px; margin-left:8px; vertical-align:middle;";
-
   const exportBtn = _makeHeaderButton(thebeExportTitle, thebeExportLabel);
   exportBtn.onclick = _exportProgress;
 
@@ -76,12 +72,10 @@ function setupPersistenceControls() {
   const resetBtn = _makeHeaderButton(thebeResetTitle, thebeResetLabel);
   resetBtn.onclick = _showResetDialog;
 
-  wrapper.appendChild(exportBtn);
-  wrapper.appendChild(importBtn);
-  wrapper.appendChild(resetBtn);
-  wrapper.appendChild(fileInput);
-
-  launchBtn.parentElement.appendChild(wrapper);
+  launchBtn.parentElement.insertBefore(exportBtn, launchBtn);
+  launchBtn.parentElement.insertBefore(importBtn, launchBtn);
+  launchBtn.parentElement.insertBefore(resetBtn, launchBtn);
+  launchBtn.parentElement.insertBefore(fileInput, launchBtn);
 }
 
 function _exportProgress() {
