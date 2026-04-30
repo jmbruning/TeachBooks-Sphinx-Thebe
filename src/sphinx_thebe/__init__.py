@@ -158,9 +158,9 @@ def init_thebe_core(app, env, docnames):
         THEBE_JS_URL = f"https://unpkg.com/thebe@{THEBE_VERSION}/lib/index.js"
         thebe_config = f"""\
             const THEBE_JS_URL = "{ THEBE_JS_URL }"
-            const thebe_selector = "{ app.config.thebe_config['selector'] }"
-            const thebe_selector_input = "{ app.config.thebe_config['selector_input'] }"
-            const thebe_selector_output = "{ app.config.thebe_config['selector_output'] }"
+            var thebe_selector = "{ app.config.thebe_config['selector'] }"
+            var thebe_selector_input = "{ app.config.thebe_config['selector_input'] }"
+            var thebe_selector_output = "{ app.config.thebe_config['selector_output'] }"
         """
         app.add_js_file(None, body=dedent(thebe_config))
         app.add_js_file(filename="sphinx-thebe.js", **{"async": "async"})
@@ -170,9 +170,9 @@ def init_thebe_core(app, env, docnames):
             app.add_js_file(THEBE_JS_URL, **{"async": "async"})
     else:
         thebe_config = f"""\
-            const thebe_selector = "{ app.config.thebe_config['selector'] }"
-            const thebe_selector_input = "{ app.config.thebe_config['selector_input'] }"
-            const thebe_selector_output = "{ app.config.thebe_config['selector_output'] }"
+            var thebe_selector = "{ app.config.thebe_config['selector'] }"
+            var thebe_selector_input = "{ app.config.thebe_config['selector_input'] }"
+            var thebe_selector_output = "{ app.config.thebe_config['selector_output'] }"
         """
         app.add_js_file(None, body=dedent(thebe_config))
         app.add_js_file(

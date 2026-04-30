@@ -10,8 +10,7 @@ function _persistenceKey(cellId) {
 }
 
 function _stableCellId(codeCell, fallbackIndex) {
-  const el = codeCell.querySelector("[data-thebe-id]");
-  return el ? el.getAttribute("data-thebe-id") : `cell-${fallbackIndex}`;
+  return `cell-${fallbackIndex}`;
 }
 
 function _makeHeaderButton(title, text) {
