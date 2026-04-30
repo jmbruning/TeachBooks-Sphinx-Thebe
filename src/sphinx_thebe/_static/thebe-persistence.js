@@ -16,7 +16,7 @@ function _stableCellId(codeCell, fallbackIndex) {
 
 function _makeHeaderButton(title, text) {
   const btn = document.createElement("button");
-  btn.classList.add("thebelab-button", "thebe-launch-button");
+  btn.classList.add("thebelab-button");
   btn.title = title;
   btn.innerText = text;
   return btn;
