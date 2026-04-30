@@ -135,6 +135,19 @@ def init_thebe_core(app, env, docnames):
     app.add_js_file(None, body=f"let thebeLiveCode = '{translate('Live Code')}';")
     app.add_js_file(None, body=f"let thebeLaunchThebe = '{translate('Launch Thebe')}';")
 
+    # Persistence i18n
+    app.add_js_file(None, body=f"let thebeExportLabel = '{translate('export')}';")
+    app.add_js_file(None, body=f"let thebeExportTitle = '{translate('download all saved progress as JSON')}';")
+    app.add_js_file(None, body=f"let thebeImportLabel = '{translate('import')}';")
+    app.add_js_file(None, body=f"let thebeImportTitle = '{translate('restore progress from a JSON file')}';")
+    app.add_js_file(None, body=f"let thebeImportError = '{translate('Import failed: invalid file format.')}';")
+    app.add_js_file(None, body=f"let thebeResetLabel = '{translate('reset')}';")
+    app.add_js_file(None, body=f"let thebeResetTitle = '{translate('Reset saved progress')}';")
+    app.add_js_file(None, body=f"let thebeResetWarning = '{translate('This will clear saved code from localStorage and cannot be undone.')}';")
+    app.add_js_file(None, body=f"let thebeResetPage = '{translate('This page only')}';")
+    app.add_js_file(None, body=f"let thebeResetAll = '{translate('Entire book')}';")
+    app.add_js_file(None, body=f"let thebeResetCancel = '{translate('Cancel')}';")
+
     # Minimal i18n injection for CSS overrides
     app.add_js_file(filename="sphinx-thebe-i18n.js")
 
@@ -166,6 +179,11 @@ def init_thebe_core(app, env, docnames):
             filename="sphinx-thebe-lite.js",
             loading_method="defer",
             priority=SPHINX_THEBE_PRIORITY,
+        )
+        app.add_js_file(
+            filename="thebe-persistence.js",
+            loading_method="defer",
+            priority=SPHINX_THEBE_PRIORITY + 1,
         )
 
 

@@ -67,6 +67,10 @@ function finalizeCodeCells(cells) {
   };
 
   cells.forEach((codeCell, index) => {
+    try { setupCellPersistence(codeCell, index); } catch (e) {
+      console.warn("[sphinx-thebe]: cell persistence setup failed for cell", index, e);
+    }
+
     const addCell = createButton(
       ["thebe-button"],
       thebeAddNewCell,
@@ -478,7 +482,11 @@ var initThebe = async () => {
   updateThebeButtonStatus(thebePythonReady, false);
 
   moveHideInputOutput();
-  
+
+  try { setupPersistenceControls(); } catch (e) {
+    console.warn("[sphinx-thebe]: persistence controls setup failed", e);
+  }
+
   // Clean up any extra empty launch buttons that may have been created
   // This removes auto-generated buttons from the theme
   const allButtons = document.querySelectorAll(".thebe-launch-button");
