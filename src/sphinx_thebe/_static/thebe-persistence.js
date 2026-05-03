@@ -167,26 +167,44 @@ function _importProgress(event) {
 function _showResetDialog() {
   const backdrop = document.createElement("div");
   backdrop.style.cssText = `
-    position:fixed; inset:0; background:rgba(0,0,0,.45);
+    position:fixed; inset:0; background:rgba(0,0,0,.5);
     z-index:10000; display:flex; align-items:center; justify-content:center;
   `;
 
   const dialog = document.createElement("div");
   dialog.style.cssText = `
-    background:#fff; border-radius:6px; padding:24px; max-width:320px;
-    box-shadow:0 4px 20px rgba(0,0,0,.3); font-family:sans-serif;
+    background:#fff; border-radius:8px; overflow:hidden;
+    max-width:320px; width:320px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25); font-family:sans-serif;
   `;
 
   dialog.innerHTML = `
-    <h3 style="margin:0 0 12px">${thebeResetTitle}</h3>
-    <p style="margin:0 0 16px; color:#555; font-size:.9em">${thebeResetWarning}</p>
-    <div style="display:flex; flex-direction:column; gap:8px;">
-      <button id="_thebe-reset-page" style="padding:8px 14px; border:none; border-radius:4px;
-        background:#e6a817; color:#000; cursor:pointer; font-weight:500;">${thebeResetPage}</button>
-      <button id="_thebe-reset-all" style="padding:8px 14px; border:none; border-radius:4px;
-        background:#c0392b; color:#fff; cursor:pointer; font-weight:500;">${thebeResetAll}</button>
-      <button id="_thebe-reset-cancel" style="padding:8px 14px; border:none; border-radius:4px;
-        background:#6c757d; color:#fff; cursor:pointer;">${thebeResetCancel}</button>
+    <div style="padding:20px 24px 0;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.346 0-2.19-1.458-1.516-2.625L8.485 2.495z" fill="#d97706"/>
+          <path d="M10 7v3.5M10 13.5h.01" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span style="font-size:.95em; font-weight:700; color:#111; letter-spacing:-.01em;">${thebeResetTitle}</span>
+      </div>
+      <p style="margin:0 0 20px; color:#6b7280; font-size:.82em; line-height:1.6;">${thebeResetWarning}</p>
+    </div>
+    <div style="border-top:1px solid #f3f4f6; padding:16px 24px; display:flex; flex-direction:column; gap:8px; background:#fafafa;">
+      <button id="_thebe-reset-page" style="padding:9px 14px; border:none; border-radius:6px;
+        background:#d97706; color:#fff; cursor:pointer; font-weight:600; font-size:.84em;
+        letter-spacing:.02em; text-align:left; display:flex; align-items:center; justify-content:space-between;">
+        <span>${thebeResetPage}</span>
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+      </button>
+      <button id="_thebe-reset-all" style="padding:9px 14px; border:none; border-radius:6px;
+        background:#dc2626; color:#fff; cursor:pointer; font-weight:600; font-size:.84em;
+        letter-spacing:.02em; text-align:left; display:flex; align-items:center; justify-content:space-between;">
+        <span>${thebeResetAll}</span>
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+      </button>
+      <button id="_thebe-reset-cancel" style="padding:9px 14px; border:1px solid #e5e7eb;
+        border-radius:6px; background:#fff; color:#6b7280; cursor:pointer; font-size:.84em;
+        font-weight:500;">${thebeResetCancel}</button>
     </div>
   `;
 
