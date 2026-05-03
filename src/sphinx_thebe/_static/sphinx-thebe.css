@@ -37,18 +37,14 @@
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
-  color: inherit;
+  color: var(--pst-color-muted, #6c757d);
   line-height: 1;
+  font-size: 0.9rem;
 }
 
 .thebe-persist-btn:hover {
   background: rgba(0, 0, 0, 0.05);
-}
-
-.thebe-persist-btn svg {
-  width: 1.1rem;
-  height: 1.1rem;
-  vertical-align: middle;
+  color: var(--pst-color-text-base, #212529);
 }
 
 /* Thebelab Cell */
