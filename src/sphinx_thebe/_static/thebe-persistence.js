@@ -174,7 +174,7 @@ function _showResetDialog() {
   const dialog = document.createElement("div");
   dialog.style.cssText = `
     background:#fff; border-radius:8px; overflow:hidden;
-    max-width:320px; width:320px;
+    max-width:280px;
     box-shadow:0 20px 60px rgba(0,0,0,.25); font-family:sans-serif;
   `;
 
