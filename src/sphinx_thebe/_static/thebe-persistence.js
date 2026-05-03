@@ -59,21 +59,34 @@ function setupCellPersistence(codeCell, index) {
 }
 
 /**
- * Finds the sidebar toggle button in the article header, so we can insert
- * our buttons immediately after it (left side of the toolbar).
+ * Finds the direct child of the launch button's ancestor container that wraps
+ * the GitHub repository link, so we can insert our buttons after it.
+ * Returns null if no GitHub link is found in the header.
  */
-function _findSidebarToggle() {
-  return document.querySelector(
-    ".bd-header-article button.sidebar-toggle, " +
-    "header button[class*='sidebar-toggle'], " +
-    ".bd-header-article button[class*='primary-toggle']"
-  );
+function _findGithubItem(launchBtn) {
+  const header = document.querySelector("header, .bd-header, #navbar-main");
+  if (!header) return null;
+  const githubLink = header.querySelector("a[href*='github.com']");
+  if (!githubLink) return null;
+
+  // Walk up from launchBtn to find the container that also holds the GitHub link
+  let container = launchBtn.parentElement;
+  while (container && !container.contains(githubLink)) {
+    container = container.parentElement;
+  }
+  if (!container) return null;
+
+  // Find the direct child of that container wrapping the GitHub link
+  let item = githubLink;
+  while (item.parentElement !== container) {
+    item = item.parentElement;
+  }
+  return item;
 }
 
 /**
- * Adds Export / Import / Reset buttons to the left of the header toolbar,
- * right after the sidebar toggle (≡). Falls back to inserting before the
- * launch button if the toggle is not found.
+ * Adds Export / Import / Reset buttons to the header, after the GitHub button.
+ * Falls back to inserting before the launch button if GitHub is not found.
  * Called once after Thebe has fully initialised.
  */
 function setupPersistenceControls() {
@@ -96,9 +109,9 @@ function setupPersistenceControls() {
   const resetBtn = _makeHeaderButton(thebeResetTitle, _ICONS.reset);
   resetBtn.onclick = _showResetDialog;
 
-  const toggle = _findSidebarToggle();
-  if (toggle) {
-    let ref = toggle;
+  const githubItem = _findGithubItem(launchBtn);
+  if (githubItem) {
+    let ref = githubItem;
     [exportBtn, importBtn, resetBtn].forEach(btn => { ref.after(btn); ref = btn; });
   } else {
     const parent = launchBtn.parentElement;

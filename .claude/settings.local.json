@@ -15,12 +15,7 @@
       "WebFetch(domain:api.github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:github.com)",
-      "WebSearch",
-      "WebFetch(domain:omarkammouh.github.io)",
-      "Bash(curl -s --max-filesize 5000000 \"https://omarkammouh.github.io/ABM-Python/C4-exercises/chapter_4_simple_models/game_of_life_mesa_3_5_0_exercises.html\")",
-      "Bash(curl -sL --max-filesize 20000000 \"https://omarkammouh.github.io/ABM-Python/C4-exercises/chapter_4_simple_models/game_of_life_mesa_3_5_0_exercises.html\" -o /tmp/gol_exercises.html)",
-      "Bash(echo \"exit: $?\")",
-      "Read(//tmp/**)"
+      "WebSearch"
     ]
   }
 }
