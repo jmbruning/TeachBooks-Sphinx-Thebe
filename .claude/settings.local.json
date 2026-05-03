@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(ffprobe -v quiet -select_streams v:0 -show_entries stream=width,height -of csv=p=0 '/Users/jensbruning/Library/CloudStorage/OneDrive-Persoonlijk/Documenten/04 Dev/01 GitHub/ABM-Python/book/figures/traffic_animation.mp4' '/Users/jensbruning/Library/CloudStorage/OneDrive-Persoonlijk/Documenten/04 Dev/01 GitHub/ABM-Python/book/figures/ch4_1_simple_economy.mp4')",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=noprint_wrappers=1 '/Users/jensbruning/Library/CloudStorage/OneDrive-Persoonlijk/Documenten/04 Dev/01 GitHub/ABM-Python/book/figures/traffic_animation.mp4')",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=noprint_wrappers=1 '/Users/jensbruning/Library/CloudStorage/OneDrive-Persoonlijk/Documenten/04 Dev/01 GitHub/ABM-Python/book/figures/ch4_1_simple_economy.mp4')",
+      "Bash(xargs -I{} basename {})",
+      "Bash(python3)",
+      "Bash(git show *)",
+      "Bash(cp /tmp/book-exporter.js old_cell_persistance/)",
+      "Bash(cp /tmp/data-manager.js old_cell_persistance/)",
+      "Bash(cp /tmp/thebe-code-persistence.js old_cell_persistance/)",
+      "Bash(gh api *)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "WebSearch"
+    ]
+  }
+}
