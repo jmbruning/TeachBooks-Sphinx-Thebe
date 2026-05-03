@@ -35,14 +35,16 @@
   padding: 0.25rem 0.4rem;
   background: none;
   border: none;
-  border-radius: 0.25rem;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
   cursor: pointer;
   color: inherit;
   line-height: 1;
+  transition: border-color 0.1s ease;
 }
 
 .thebe-persist-btn:hover {
-  background: rgba(0, 0, 0, 0.05);
+  border-bottom-color: var(--pst-color-primary, green);
 }
 
 .thebe-persist-btn svg {
